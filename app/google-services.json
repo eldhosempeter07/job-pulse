@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "24759725583",
+    "firebase_url": "https://job-pulse-18b7c-default-rtdb.firebaseio.com",
+    "project_id": "job-pulse-18b7c",
+    "storage_bucket": "job-pulse-18b7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24759725583:android:12aefb3d085e8a9ec7bd7a",
+        "android_client_info": {
+          "package_name": "com.example.jobpulse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArpeXAyjGwGHOgO5ZDqhzxTdZjY2sgp8g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
