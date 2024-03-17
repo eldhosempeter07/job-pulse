@@ -29,27 +29,16 @@
         android:gravity="center"
         android:text="Register"
         android:textSize="24sp"
-        android:textStyle="bold"        app:layout_constraintBottom_toTopOf="@+id/email"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/password"
-        android:layout_width="386dp"
-        android:layout_height="44dp"
-        android:layout_marginBottom="32dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:hint="Password"
-        app:layout_constraintBottom_toTopOf="@+id/btnregister"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:hint="Email"
         app:layout_constraintBottom_toTopOf="@+id/password"
@@ -57,29 +46,77 @@
         app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/password"
+        android:layout_width="386dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:hint="Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/authername"
+        android:layout_width="386dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:hint="User Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/usertitle"
+        android:layout_width="386dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:hint="Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authername" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/userdesc"
+        android:layout_width="386dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:hint="Description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usertitle" />
+
     <Button
         android:id="@+id/btnregister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="156dp"
         android:backgroundTint="#0077b5"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="Register"
-        app:layout_constraintBottom_toTopOf="@+id/loginNow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/userdesc" />
 
     <TextView
         android:id="@+id/loginNow"
-        android:fontFamily="sans-serif-condensed-medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="200dp"
-        android:text="click_to_login"
-        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="88dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Already have an account? Login now"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnregister" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
