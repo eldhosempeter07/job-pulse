@@ -13,16 +13,10 @@
         android:theme="@style/Theme.JobPulse"
         tools:targetApi="31">
         <activity
-            android:name=".AddConnectionActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".StartPage"
+            android:exported="false" />
+        <activity
+            android:name=".AddConnectionActivity"
             android:exported="false" />
         <activity
             android:name=".CandidateDetailsActivity"
@@ -37,24 +31,18 @@
             android:name=".CandidateActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
-        </activity>
-        <activity
             android:name=".Login"
             android:exported="true">
-                        <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
-            <!-- <intent-filter> -->
+                        <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>

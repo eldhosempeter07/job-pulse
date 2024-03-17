@@ -38,13 +38,13 @@
             android:textStyle="bold" />
 
         <ImageButton
-            android:id="@+id/home_buttom"
+            android:id="@+id/signout_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginLeft="80dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/home" />
+            android:src="@drawable/signout" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

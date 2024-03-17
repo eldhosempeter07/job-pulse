@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.jobpulse.MainActivity
 import com.example.jobpulse.R
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
 class CandidateActivity: AppCompatActivity()  {
@@ -36,9 +37,14 @@ class CandidateActivity: AppCompatActivity()  {
         rview.layoutManager = LinearLayoutManager(this)
         rview.adapter = adapter
 
-        val home: ImageButton = findViewById(R.id.imageButton1)
-        home.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+        val signout: ImageButton = findViewById(R.id.imageButton1)
+        signout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            // Clear the back stack to prevent the user from going back
+            val intent = Intent(this, Login::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
+            finish()
             startActivity(intent)
         }
 
@@ -48,8 +54,7 @@ class CandidateActivity: AppCompatActivity()  {
             startActivity(intent)
         }
         val addCandidate: Button = findViewById(R.id.addNew)
-
-                addCandidate.setOnClickListener {
+        addCandidate.setOnClickListener {
             val addConnectionIntent = Intent(this, AddConnectionActivity::class.java)
             startActivity(addConnectionIntent)
         }

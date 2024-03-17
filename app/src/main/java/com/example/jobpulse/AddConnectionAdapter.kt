@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -30,10 +31,13 @@ class AddConnectionAdapter(options:FirebaseRecyclerOptions<Candidate>):
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int, model: Candidate) {
+        val user = FirebaseAuth.getInstance().currentUser
+        val userId = user?.uid
         holder.name.text = model.name
         holder.title.text = model.title
         var database: FirebaseDatabase = FirebaseDatabase.getInstance()
-        var recruitmentRef = database.reference.child("recruitment").child("1")
+        if(userId !== null){
+            var recruitmentRef = database.reference.child("recruitment").child(userId)
         recruitmentRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -53,6 +57,8 @@ class AddConnectionAdapter(options:FirebaseRecyclerOptions<Candidate>):
                 TODO("Not yet implemented")
             }
         })
+        }
+
         val storageRef:StorageReference = FirebaseStorage.getInstance().getReferenceFromUrl(model.image)
         Glide.with(holder.imageItem.context).load(storageRef).into(holder.imageItem)
         holder.itemView.setOnClickListener {
@@ -62,15 +68,16 @@ class AddConnectionAdapter(options:FirebaseRecyclerOptions<Candidate>):
             intent.putExtra("title", model.title)
             intent.putExtra("description", model.description)
             intent.putExtra("image", model.image)
-
+            intent.putExtra("id", model.id)
+            intent.putExtra("from", "add_candidate")
             holder.itemView.context.startActivity(intent)
         }
         val addFieldButton: Button = holder.itemView.findViewById(R.id.connect_button)
         addFieldButton.setOnClickListener {
             Toast.makeText(holder.itemView.getContext(), "Connected Successfully", Toast.LENGTH_LONG).show()
-
-            addFieldToDocument("1", model.id, holder)
-
+            if (userId != null) {
+                addFieldToDocument(userId, model.id, holder)
+            }
         }
     }
 

@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
 class AddConnectionActivity : AppCompatActivity() {
@@ -18,10 +19,16 @@ class AddConnectionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_connection)
 
-        val btn2: ImageButton = findViewById(R.id.home_buttom)
-        btn2.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent) }
+        val signout: ImageButton = findViewById(R.id.signout_button)
+        signout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            // Clear the back stack to prevent the user from going back
+            val intent = Intent(this, Login::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
+            finish()
+            startActivity(intent)
+        }
 
         val btn4: ImageButton = findViewById(R.id.imageButton4)
         btn4.setOnClickListener {
@@ -37,13 +44,6 @@ class AddConnectionActivity : AppCompatActivity() {
         rview.layoutManager = LinearLayoutManager(this)
         rview.adapter = adapter
 
-
-//        Home Button
-        val home: ImageButton = findViewById(R.id.home_buttom)
-        home.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
 
 //        Back Button
         val back: ImageView = findViewById(R.id.arrowback)

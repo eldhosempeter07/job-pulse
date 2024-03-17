@@ -49,7 +49,7 @@ class Register : AppCompatActivity() {
         editTextPassword.transformationMethod = PasswordTransformationMethod.getInstance()
 
         mAuth = FirebaseAuth.getInstance()
-        databaseReference = FirebaseDatabase.getInstance().reference.child("posts")
+        databaseReference = FirebaseDatabase.getInstance().reference.child("recruitment")
         textView.setOnClickListener {
             val intent = Intent(applicationContext, Login::class.java)
             startActivity(intent)
@@ -84,15 +84,14 @@ class Register : AppCompatActivity() {
                     if (task.isSuccessful) {
                         val currentUser: FirebaseUser? = mAuth.currentUser
                         val userId = currentUser?.uid
-
                         // Save user data to the database
                         val desc = editTextdesc.text.toString()
                         val authorName = editTextauthername.text.toString()
                         val title = editTexttitle.text.toString()
                         val currentTime = Calendar.getInstance().time
-                        val post = Post(title, desc, userId, authorName, currentTime)
+                        val recruitment = Recruitment(title, desc, userId, authorName, currentTime)
                         userId?.let {
-                            databaseReference.child(it).setValue(post)
+                            databaseReference.child(it).setValue(recruitment)
                                 .addOnCompleteListener { dbTask ->
                                     if (dbTask.isSuccessful) {
                                         Toast.makeText(
@@ -100,6 +99,8 @@ class Register : AppCompatActivity() {
                                             "Account Created",
                                             Toast.LENGTH_SHORT
                                         ).show()
+                                        val intent = Intent(applicationContext, Login::class.java)
+                                        startActivity(intent)
                                         // Proceed to login or any other action
                                     } else {
                                         // Handle database save failure
