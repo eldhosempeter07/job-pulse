@@ -38,7 +38,7 @@
             android:textStyle="bold" />
 
         <ImageButton
-            android:id="@+id/imageButton1"
+            android:id="@+id/home_buttom"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -47,23 +47,13 @@
             android:src="@drawable/home" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/addNew"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="30dp"
-        android:text="Add More Connections"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rView"
-        android:layout_width="match_parent"
-        android:layout_height="530dp"
-        android:layout_marginTop="65dp"
+        android:layout_width="402dp"
+        android:layout_height="614dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
@@ -124,8 +114,6 @@
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
