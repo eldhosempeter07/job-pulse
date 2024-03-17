@@ -6,4 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".Splash_Screen">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="196dp"
+        android:layout_height="521dp"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="108dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

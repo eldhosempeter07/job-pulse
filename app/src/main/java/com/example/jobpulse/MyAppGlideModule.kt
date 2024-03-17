@@ -1,4 +1,4 @@
-package com.example.firebaserecruiting
+package com.example.jobpulse
 
 import android.content.Context
 import com.bumptech.glide.Glide
