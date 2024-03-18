@@ -1,8 +1,10 @@
 package com.example.jobpulse
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -24,6 +26,23 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val btn2: ImageButton = findViewById(R.id.imageButton2)
+        btn2.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent) }
+
+        val btn3 : ImageButton = findViewById(R.id.imageButton3)
+        btn3.setOnClickListener {
+            val intent = Intent (this, PostActivity::class.java)
+            startActivity(intent)
+        }
+
+        val btn4: ImageButton = findViewById(R.id.imageButton4)
+        btn4.setOnClickListener {
+            val intent = Intent(this, CandidateActivity::class.java)
+            startActivity(intent)}
+
 
         //Initializing recyclerview and setting it's property
         recyclerView = findViewById(R.id.recyclerFeed)

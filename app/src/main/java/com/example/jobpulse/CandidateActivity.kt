@@ -20,10 +20,17 @@ class CandidateActivity: AppCompatActivity()  {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_candidate)
+
         val btn2: ImageButton = findViewById(R.id.imageButton2)
         btn2.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent) }
+
+        val btn3 : ImageButton = findViewById(R.id.imageButton3)
+        btn3.setOnClickListener {
+            val intent = Intent (this, PostActivity::class.java)
+            startActivity(intent)
+        }
 
         val btn4: ImageButton = findViewById(R.id.imageButton4)
         btn4.setOnClickListener {
