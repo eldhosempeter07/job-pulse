@@ -31,10 +31,11 @@ class AddConnectionAdapter(options:FirebaseRecyclerOptions<Candidate>):
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int, model: Candidate) {
-        val user = FirebaseAuth.getInstance().currentUser
-        val userId = user?.uid
+
         holder.name.text = model.name
         holder.title.text = model.title
+        val user = FirebaseAuth.getInstance().currentUser
+        val userId = user?.uid
         var database: FirebaseDatabase = FirebaseDatabase.getInstance()
         if(userId !== null){
             var recruitmentRef = database.reference.child("recruitment").child(userId)
