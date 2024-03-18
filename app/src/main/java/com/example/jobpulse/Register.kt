@@ -89,7 +89,8 @@ class Register : AppCompatActivity() {
                         val authorName = editTextauthername.text.toString()
                         val title = editTexttitle.text.toString()
                         val currentTime = Calendar.getInstance().time
-                        val recruitment = Recruitment(title, desc, userId, authorName, currentTime)
+                        val link = "gs://job-pulse-18b7c.appspot.com/candidate1.jpg"
+                        val recruitment = Recruitment(title, desc, userId, authorName, currentTime,link)
                         userId?.let {
                             databaseReference.child(it).setValue(recruitment)
                                 .addOnCompleteListener { dbTask ->
