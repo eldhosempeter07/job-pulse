@@ -1,11 +1,17 @@
 package com.example.jobpulse
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 //this adapter class for displaying a list of posts in a RecyclerView.
 
@@ -38,6 +44,42 @@ class PostAdapter (private val context: Context, private val postList: List<Post
         holder.descTextView.text = currentPost.desc
         holder.authorTextView.text = "Posted by: ${currentPost.authorName}"
         holder.timeTextView.text = "Posted on: ${currentPost.createdTime}"
-    }
+        Log.i("pass","pass 0")
 
+        //new
+        var database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val user = FirebaseAuth.getInstance().currentUser
+        val userId = user?.uid
+
+        if (userId !== null) {
+            Log.i("pass 1","pass 1")
+
+            currentPost.authorId?.let { Log.i("currentPost.authorId", it) }
+            var recruitmentRef = database.reference.child("recruitment").child(userId)
+            recruitmentRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        Log.i("reffff","reffff")
+                        if (dataSnapshot.child("connect").exists()) {
+                            val connectArray: ArrayList<String> =
+                                dataSnapshot.child("connect").value as ArrayList<String>
+                            for(item in connectArray){
+                                Log.i("conn",item)
+                            }
+                            if (!connectArray.contains(currentPost.authorId)) {
+                                holder.itemView.visibility = View.INVISIBLE
+                                holder.itemView.layoutParams.height = 0
+                                holder.itemView.layoutParams.width = 0
+                            }
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+        }
+    }
 }
