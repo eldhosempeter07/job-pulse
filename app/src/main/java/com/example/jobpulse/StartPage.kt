@@ -44,7 +44,7 @@ class StartPage : AppCompatActivity() {
         }
 
         btnStart.setOnClickListener {
-            val intent = Intent(applicationContext, CandidateActivity::class.java)
+            val intent = Intent(applicationContext, Splash_Screen::class.java)
             startActivity(intent)
             finish()
         }
