@@ -8,4 +8,5 @@ data class Recruitment(
     val id: String? = null,
     val name: String? = null,
     val createdTime: Date? = null,
+    val image:String? = null
 )
